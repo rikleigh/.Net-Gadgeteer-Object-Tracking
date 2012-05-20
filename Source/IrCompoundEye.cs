@@ -19,16 +19,16 @@ namespace GadgeteerObjectTracking
 
         public IrCompoundEye(Extender extender1, Extender extender2)
         {
+            if (extender1 == null || extender2 == null)
+            {
+                throw new ApplicationException("analog extender modules not set up correctly");
+            }
+
             AnalogLeft = extender1.SetupAnalogInput(GT.Socket.Pin.Three);
             AnalogRight = extender1.SetupAnalogInput(GT.Socket.Pin.Four);
-            AnalogUp = extender2.SetupAnalogInput(GT.Socket.Pin.Three);
-            AnalogDown = extender2.SetupAnalogInput(GT.Socket.Pin.Four);
-            IrLeds = extender1.SetupDigitalOutput(GT.Socket.Pin.Six, false);
-
-            if (AnalogLeft == null || AnalogRight == null || AnalogUp == null || AnalogDown == null || IrLeds == null)
-            {
-                throw new ApplicationException("one or more pins are null");
-            }
+            AnalogDown = extender2.SetupAnalogInput(GT.Socket.Pin.Three);
+            AnalogUp = extender1.SetupAnalogInput(GT.Socket.Pin.Four);           
+            IrLeds = extender1.SetupDigitalOutput(GT.Socket.Pin.Six, false);      
         }
 
         public IrCompoundEyeData Read()

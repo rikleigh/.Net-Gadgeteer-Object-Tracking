@@ -25,16 +25,20 @@ namespace GadgeteerObjectTracking
 
         public PanAndTiltController(Extender extender, uint pwmPulsePeriod)
         {
+            if (extender == null)
+            {
+                throw new ApplicationException("pwm extender not set up correctly");
+            }
+
             _pwmPulsePeriod = pwmPulsePeriod;
             PanPwm = extender.SetupPWMOutput(GT.Socket.Pin.Seven);
             TiltPwm = extender.SetupPWMOutput(GT.Socket.Pin.Eight);
 
-            if (PanPwm == null || TiltPwm == null)
-            {
-                throw new ApplicationException("one or more pins are null");
-            }
+            Pan = PanCenter;
+            Tilt = TiltCenter;
 
-            Center(false);
+            SetPan();
+            SetTilt();
         }
 
         public void SetPan()
@@ -53,20 +57,7 @@ namespace GadgeteerObjectTracking
             Servo(TiltPwm, Tilt);
         }
 
-        public void Center(bool step)
-        {
-            if (step)
-            {
-                StepTowardsCenter();
-            }
-            else
-            {
-                Servo(PanPwm, PanCenter);
-                Servo(TiltPwm, TiltCenter);
-            }
-        }
-
-        private void StepTowardsCenter()
+        public void StepTowardsCenter()
         {
             if (Pan > PanCenter) Pan -= 1;
             if (Pan < PanCenter) Pan += 1;
@@ -79,7 +70,7 @@ namespace GadgeteerObjectTracking
 
         private void Servo(GT.Interfaces.PWMOutput pwm, int pwmPulseHighTime)
         {
-            pwm.SetPulse(_pwmPulsePeriod, (uint)pwmPulseHighTime);
+            pwm.SetPulse(_pwmPulsePeriod, (uint)pwmPulseHighTime * 1000);
         }
     }
 }

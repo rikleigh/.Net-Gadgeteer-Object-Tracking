@@ -24,8 +24,8 @@ namespace GadgeteerObjectTracking
             //set default values
             DistanceMax = 220;
             BestDistance = 550;
-            LRScaleFactor = 4;
-            UDScaleFactor = 4;
+            LRScaleFactor = 5;
+            UDScaleFactor = 5;
 
             _irEye = irEye;
             _panAndTiltController = panAndTiltController;          
@@ -56,15 +56,17 @@ namespace GadgeteerObjectTracking
 
                 if (irEyeData.CurrentDistance < DistanceMax)
                 {
-                    _panAndTiltController.Center(true);
+                    // nothing within range, move servos back to center position
+                    _panAndTiltController.StepTowardsCenter();
                 }
                 else
                 {
+                    // something is within range, track it.
                     var panScale = (irEyeData.LeftIrValue + irEyeData.RightIrValue) / LRScaleFactor;
                     var tiltScale = (irEyeData.UpIrValue + irEyeData.DownIrValue) / UDScaleFactor;
 
-                    _panAndTiltController.Pan += (int)GetPanTiltAdjustment(irEyeData.RightIrValue, irEyeData.LeftIrValue, panScale);
-                    _panAndTiltController.Tilt += (int)GetPanTiltAdjustment(irEyeData.DownIrValue, irEyeData.UpIrValue, panScale);
+                    _panAndTiltController.Pan += (int)GetPanTiltAdjustment(irEyeData.LeftIrValue, irEyeData.RightIrValue, panScale);
+                    _panAndTiltController.Tilt += (int)GetPanTiltAdjustment(irEyeData.UpIrValue, irEyeData.DownIrValue, panScale);
 
                     _panAndTiltController.SetPan();
                     _panAndTiltController.SetTilt();
