@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{40882A44-6136-4B45-BDC9-4808F7634875}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GadgeteerObjectTracking", "Source\GadgeteerObjectTracking.csproj", "{D86C57D2-1564-4576-A2B4-991C6A3611F7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Demo", "Demo", "{AF705BD7-4FC3-41F8-94A9-13F8DDE23625}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ObjectTrackingDemo", "ObjectTrackingDemo\ObjectTrackingDemo.csproj", "{35E51B2A-757D-4A42-98F7-FF9284D83900}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D86C57D2-1564-4576-A2B4-991C6A3611F7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D86C57D2-1564-4576-A2B4-991C6A3611F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D86C57D2-1564-4576-A2B4-991C6A3611F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D86C57D2-1564-4576-A2B4-991C6A3611F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35E51B2A-757D-4A42-98F7-FF9284D83900}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35E51B2A-757D-4A42-98F7-FF9284D83900}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35E51B2A-757D-4A42-98F7-FF9284D83900}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{35E51B2A-757D-4A42-98F7-FF9284D83900}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35E51B2A-757D-4A42-98F7-FF9284D83900}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35E51B2A-757D-4A42-98F7-FF9284D83900}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D86C57D2-1564-4576-A2B4-991C6A3611F7} = {40882A44-6136-4B45-BDC9-4808F7634875}
+		{35E51B2A-757D-4A42-98F7-FF9284D83900} = {AF705BD7-4FC3-41F8-94A9-13F8DDE23625}
+	EndGlobalSection
+EndGlobal
