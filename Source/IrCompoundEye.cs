@@ -27,7 +27,7 @@ namespace GadgeteerObjectTracking
             AnalogLeft = extender1.SetupAnalogInput(GT.Socket.Pin.Three);
             AnalogRight = extender1.SetupAnalogInput(GT.Socket.Pin.Four);
             AnalogDown = extender2.SetupAnalogInput(GT.Socket.Pin.Three);
-            AnalogUp = extender1.SetupAnalogInput(GT.Socket.Pin.Four);           
+            AnalogUp = extender2.SetupAnalogInput(GT.Socket.Pin.Four);           
             IrLeds = extender1.SetupDigitalOutput(GT.Socket.Pin.Six, false);      
         }
 
